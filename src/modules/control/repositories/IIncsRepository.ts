@@ -12,6 +12,7 @@ interface ICreateIncDTO {
 }
 
 interface IIncsRepository {
+  getIncs(): Promise<Incs[]>;
   findById(Cod: string): Promise<Incs>;
   updateIncById(Cod: string, desc: string): Promise<void>;
   closeIncById(Cod: string): Promise<void>;
