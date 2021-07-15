@@ -8,7 +8,7 @@ interface ICreateIncDTO {
   descricao: string;
   sistema: string;
   celulas: string;
-  sites: string;
+  sites: Array<string>;
 }
 
 interface IIncsRepository {

@@ -32,7 +32,7 @@ class CreateIncController {
       return response.status(201).send();
     } catch (error) {
       return response
-        .status(400)
+        .status(500)
         .json({ status_message: 'Ocorreu um erro ao criar novo incidente' });
     }
   }

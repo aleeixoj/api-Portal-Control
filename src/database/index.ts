@@ -1,5 +1,4 @@
-import {createConnections} from 'typeorm';
-
+import { createConnections } from 'typeorm';
 
 async function conn() {
   await createConnections();

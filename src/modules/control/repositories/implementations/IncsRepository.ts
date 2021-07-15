@@ -1,4 +1,4 @@
-import { getRepository, LessThan, MoreThan, Repository } from 'typeorm';
+import { getRepository, MoreThan, Repository } from 'typeorm';
 
 import { Incs } from '../../entities/Incs';
 import { ICreateIncDTO, IIncsRepository } from '../IIncsRepository';
