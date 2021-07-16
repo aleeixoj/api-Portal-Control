@@ -22,7 +22,7 @@ class Incs {
   @Column()
   celulas: string;
   @Column()
-  sites: Array<string>;
+  sites: string;
 }
 
 export { Incs };
