@@ -8,28 +8,28 @@ import {
 @injectable()
 class CreateIncUseCase {
   constructor(
-    @inject('IncRepository')
+    @inject('IncsRepository')
     private incsRepository: IIncsRepository
   ) {}
   async execute({
-    incidente,
+    inc,
     celulas,
     data_inicio,
     descricao,
     sistema,
     sites,
     status,
-    tipo_falha,
+    impacto,
   }: ICreateIncDTO): Promise<void> {
     await this.incsRepository.create({
-      incidente,
+      inc,
       celulas,
       data_inicio,
       descricao,
       sistema,
       sites,
       status,
-      tipo_falha,
+      impacto,
     });
   }
 }

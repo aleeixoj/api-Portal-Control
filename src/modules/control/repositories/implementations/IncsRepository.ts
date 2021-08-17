@@ -40,9 +40,9 @@ class IncsRepository implements IIncsRepository {
     return incs;
   }
   async create({
-    incidente,
+    inc,
     status,
-    tipo_falha,
+    impacto,
     data_inicio,
     descricao,
     sistema,
@@ -50,9 +50,9 @@ class IncsRepository implements IIncsRepository {
     sites,
   }: ICreateIncDTO): Promise<void> {
     const createInc = this.incs.create({
-      incidente,
+      incidente: inc,
       status,
-      tipo_falha,
+      tipo_falha: impacto,
       data_inicio,
       descricao,
       sistema,

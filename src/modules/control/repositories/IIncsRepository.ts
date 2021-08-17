@@ -1,9 +1,9 @@
 import { Incs } from '../entities/Incs';
 
 interface ICreateIncDTO {
-  incidente: string;
+  inc: string;
   status: string;
-  tipo_falha: string;
+  impacto: string;
   data_inicio: Date;
   descricao: string;
   sistema: string;
@@ -18,9 +18,9 @@ interface IIncsRepository {
   closeIncById(Cod: string): Promise<void>;
   list(): Promise<Incs[]>;
   create({
-    incidente,
+    inc,
     status,
-    tipo_falha,
+    impacto,
     data_inicio,
     descricao,
     sistema,

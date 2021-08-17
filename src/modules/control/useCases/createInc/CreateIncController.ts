@@ -1,3 +1,4 @@
+import { parseISO, format } from 'date-fns';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -7,33 +8,35 @@ class CreateIncController {
   async handle(request: Request, response: Response): Promise<Response> {
     const {
       celulas,
-      data_inicio,
+      calendar,
       descricao,
-      incidente,
+      inc,
       sistema,
       sites,
       status,
-      tipo_falha,
+      impacto,
     } = request.body;
 
     const createIncUseCase = container.resolve(CreateIncUseCase);
+    const time = Date.parse(calendar);
+    const data_inicio = new Date(time);
 
     try {
-      await createIncUseCase.execute({
-        celulas,
-        data_inicio,
-        descricao,
-        incidente,
-        sistema,
-        sites,
-        status,
-        tipo_falha,
-      });
+      console.log(data_inicio);
+      // await createIncUseCase.execute({
+      //   celulas,
+      //   data_inicio,
+      //   descricao,
+      //   inc,
+      //   sistema,
+      //   sites,
+      //   status,
+      //   impacto,
+      // });
+
       return response.status(201).send();
     } catch (error) {
-      return response
-        .status(500)
-        .json({ status_message: 'Ocorreu um erro ao criar novo incidente' });
+      return response.status(500).json({ status_message: error.message });
     }
   }
 }
