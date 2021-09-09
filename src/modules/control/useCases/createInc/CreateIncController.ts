@@ -1,4 +1,6 @@
-import { parseISO, format } from 'date-fns';
+/* eslint-disable import/no-duplicates */
+import { parse, format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -18,25 +20,26 @@ class CreateIncController {
     } = request.body;
 
     const createIncUseCase = container.resolve(CreateIncUseCase);
-    const time = Date.parse(calendar);
-    const data_inicio = new Date(time);
+
+    const data_inicio = parse(calendar, 'yyyy-MM-dd', new Date(), {
+      locale: ptBR,
+    });
 
     try {
-      console.log(data_inicio);
-      // await createIncUseCase.execute({
-      //   celulas,
-      //   data_inicio,
-      //   descricao,
-      //   inc,
-      //   sistema,
-      //   sites,
-      //   status,
-      //   impacto,
-      // });
+      await createIncUseCase.execute({
+        celulas,
+        data_inicio,
+        descricao,
+        inc,
+        sistema,
+        sites,
+        status,
+        impacto,
+      });
 
-      return response.status(201).send();
+      return response.status(201).json({ message: 'Incidente cadastrado' });
     } catch (error) {
-      return response.status(500).json({ status_message: error.message });
+      return response.status(500).json({ message: error.message });
     }
   }
 }
